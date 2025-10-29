@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema - Visión Artificial con Python</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .tema-numero {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 2rem;
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 400;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .code-container {
+            background: #2d2d2d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .code-container pre {
+            margin: 0;
+            color: #f8f8f2;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
+            line-height: 1.6;
+        }
+
+        .code-container code {
+            display: block;
+        }
+
+        .function-item {
+            padding: 1.5rem;
+            border-left: 3px solid #667eea;
+            background: #f9f9f9;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .function-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .function-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .function-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
+        }
+
+        .function-params {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 0.8rem;
+        }
+
+        .function-params strong {
+            color: #764ba2;
+            font-size: 0.9rem;
+        }
+
+        .function-params ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .function-params li {
+            margin-bottom: 0.3rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .code-container {
+                padding: 1rem;
+            }
+
+            .function-item {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Abrir imagen con Python</h1>
+        <p class="tema-numero">Tema 1 - Visión Artificial</p>
+    </div>
+
+    <a href="index.html" class="back-link">← Volver al catálogo</a>
+
+    <div class="container">
+        <section class="section">
+            <h2>Código del Ejemplo</h2>
+            <div class="code-container">
+                <pre><code>import cv2
+#importa la libreria opencv
+
+#carga imagen
+gato=cv2.imread('ga.jpg')
+
+while True:
+
+    recorte=gato[90:250,50:270] #alto y ancho
+    cv2.imshow('imagen original',gato)
+    cv2.imshow('imagen recortada',recorte)
+
+
+    tecla=cv2.waitKey(0)#guarda en la variable tecla la tecla presionada
+    if tecla==ord('y'):
+        cv2.destroyAllWindows()
+    elif tecla==ord('a'):
+        cv2.imshow('imagen original',gato)
+    elif tecla==ord('x'):
+        cv2.imshow('imagen recortada',recorte)
+
+        break</code></pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Glosario de Funciones</h2>
+            
+            <div class="function-item">
+                <div class="function-name">cv2.imread()</div>
+                <div class="function-description">
+                   Carga una imagen desde el disco y la devuelve como una matriz NumPy con los valores de color de cada píxel.
+                </div>
+            </div>
+
+            <div class="function-item">
+                <div class="function-name">while True:</div>
+                <div class="function-description">
+                   Crea un bucle infinito que mantiene el programa en ejecución hasta que se cumpla una condición de salida.
+                </div>
+            </div>
+
+            <div class="function-item">
+                <div class="function-name">gato[90:250, 50:270]</div>
+                <div class="function-description">
+                    Realiza un recorte de la imagen seleccionando una región específica mediante coordenadas de alto y ancho.
+                </div>
+            </div>
+
+            <div class="function-item">
+                <div class="function-name">ord()</div>
+                <div class="function-description">
+                    Devuelve el código numérico (ASCII) correspondiente a un carácter dado.
+                </div>
+               
+                </div>
+                <div class="function-item">
+                <div class="function-name">break</div>
+                <div class="function-description">
+                   Interrumpe el ciclo while y finaliza su ejecución
+                </div>
+            </div>
+            <div class="function-item">
+                <div class="function-name">cv2.destroyAllWindows()</div>
+                <div class="function-description">
+                   Cierra todas las ventanas abiertas por OpenCV.
+                </div>
+            </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
