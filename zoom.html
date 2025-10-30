@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema - Visión Artificial con Python</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .tema-numero {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 2rem;
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 400;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .code-container {
+            background: #2d2d2d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .code-container pre {
+            margin: 0;
+            color: #f8f8f2;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
+            line-height: 1.6;
+        }
+
+        .code-container code {
+            display: block;
+        }
+
+        .function-item {
+            padding: 1.5rem;
+            border-left: 3px solid #667eea;
+            background: #f9f9f9;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .function-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .function-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .function-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
+        }
+
+        .function-params {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 0.8rem;
+        }
+
+        .function-params strong {
+            color: #764ba2;
+            font-size: 0.9rem;
+        }
+
+        .function-params ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .function-params li {
+            margin-bottom: 0.3rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .code-container {
+                padding: 1rem;
+            }
+
+            .function-item {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>zoom</h1>
+        <p class="tema-numero">Tema 7 - Visión Artificial</p>
+    </div>
+
+    <a href="index.html" class="back-link">← Volver al catálogo</a>
+
+    <div class="container">
+        <section class="section">
+            <h2>Código del Ejemplo</h2>
+            <div class="code-container">
+                <pre><code>def zoom():
+    import cv2
+
+    img_original=cv2.imread("perro2.jpg")
+
+    zoom=1.0
+
+    while True:
+        img=cv2.resize(img_original,None,fx=zoom,fy=zoom)
+        cv2.imshow("Imagen nueva",img)
+        tecla=cv2.waitKey(0)
+        if tecla==ord("+"):
+            zoom=zoom*1.2
+        elif tecla==ord("-"):
+            zoom=zoom*0.8
+        elif tecla==ord("o"):
+            zoom=1.0
+        elif tecla==ord("x"):
+            break
+
+    cv2.destroyAllWindows()
+
+if __name__=="__main__":
+    zoom()</code></pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Glosario de Funciones</h2>
+            
+            <div class="function-item">
+                <div class="function-name">def zoom():</div>
+                <div class="function-description">
+                   Define una función llamada zoom.
+Todo el código dentro de ella se ejecutará cuando se llame con zoom().
+                </div>
+            </div>
+
+            <div class="function-item">
+                <div class="function-name">import cv2</div>
+                <div class="function-description">
+                   Importa la librería OpenCV, que sirve para procesar imágenes y video en Python.
+Es necesaria para usar funciones como imread(), resize(), imshow(), etc.
+                </div>
+            </div>
+
+            <div class="function-item">
+                <div class="function-name">cv2.imread("perro2.jpg")</div>
+                <div class="function-description">
+                    Lee una imagen desde el archivo especificado (en este caso "perro2.jpg") y la carga en memoria como una matriz de píxeles.
+                </div>
+            </div>
+
+            <div class="function-item">
+                <div class="function-name">cv2.resize(img_original, None, fx=zoom, fy=zoom)</div>
+                <div class="function-description">
+                   Redimensiona (escala) la imagen original.
+Los parámetros fx y fy indican el factor de zoom (aumento o reducción).
+                </div>
+               
+                </div>
+
+                <div class="function-item">
+                <div class="function-name">cv2.imshow("Imagen nueva", img)</div>
+                <div class="function-description">
+                   Muestra una ventana con el título "Imagen nueva" y enseña la imagen actual.
+Cada vez que cambias el zoom, la ventana se actualiza con la nueva versión.
+                </div>
+            </div>
+
+            <div class="function-item">
+                <div class="function-name">cv2.waitKey(0)</div>
+                <div class="function-description">
+                    Espera a que el usuario presione una tecla.
+El valor devuelto representa el código ASCII de la tecla presionada.
+Si se usa 0, espera indefinidamente hasta que se pulse una tecla.
+                </div>
+            </div>
+
+             <div class="function-item">
+                <div class="function-name">ord("+")</div>
+                <div class="function-description">
+Convierte un carácter (como "+", "-", "o", "x") en su valor numérico (ASCII).
+Sirve para comparar la tecla presionada con el valor que devuelve cv2.waitKey().
+                </div>
+            </div>
+
+             <div class="function-item">
+                <div class="function-name">if __name__ == "__main__":</div>
+                <div class="function-description">
+                    Bloque especial en Python que se ejecuta solo si el archivo se ejecuta directamente (no si se importa como módulo).
+Aquí se usa para ejecutar la función zoom() automáticamente cuando corres el script.
+                </div>
+            </div>
+
+             <div class="function-item">
+                <div class="function-name">zoom = zoom * 1.2 / zoom = zoom * 0.8</div>
+                <div class="function-description">
+                  Modifica el nivel de zoom:
+
+* 1.2 → aumenta un 20% el tamaño.
+
+* 0.8 → reduce un 20% el tamaño.
+                </div>
+            </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
