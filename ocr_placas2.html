@@ -244,30 +244,52 @@ cv2.destroyAllWindows()</code></pre>
             <h2>Glosario de Funciones</h2>
             
             <div class="function-item">
+                <div class="function-name">pytesseract.image_to_string()</div>
+                <div class="function-description">
+                    Lee el texto de una imagen usando reconocimiento óptico de caracteres (OCR)
+                </div>
+            </div>
+
+            <div class="function-item">
                 <div class="function-name">cv2.imread()</div>
                 <div class="function-description">
-                    Lee una imagen desde un archivo y la carga en memoria como un array de NumPy.
+                  Carga una imagen desde un archivo para poder procesarla.
+                </div>
+            </div>
+
+            <div class="function-item">
+                <div class="function-name">cv2.threshold()</div>
+                <div class="function-description">
+                   Separa el texto del fondo aplicando un umbral (blanco y negro).
                 </div>
             </div>
 
             <div class="function-item">
                 <div class="function-name">cv2.cvtColor()</div>
                 <div class="function-description">
-                    Convierte una imagen de un espacio de color a otro. Muy útil porque OpenCV lee imágenes en formato BGR pero muchas bibliotecas usan RGB.
+                    Convierte la imagen a otro formato de color, por ejemplo, a escala de grises.
                 </div>
-            </div>
-
-            <div class="function-item">
-                <div class="function-name">plt.imshow()</div>
-                <div class="function-description">
-                    Muestra una imagen en una figura de Matplotlib. Permite visualizar arrays de NumPy como imágenes.
+               
                 </div>
-            </div>
-
+            
             <div class="function-item">
-                <div class="function-name">Image.open()</div>
+                <div class="function-name">cv2.imshow()</div>
                 <div class="function-description">
-                    Abre y identifica un archivo de imagen usando la biblioteca PIL/Pillow. Alternativa a OpenCV para cargar imágenes.
+                    Muestra una imagen en una ventana.
+                </div>
+               
+                </div>
+            <div class="function-item">
+                <div class="function-name">cv2.waitKey()</div>
+                <div class="function-description">
+                   Pausa la ejecución hasta que se presione una tecla.
+                </div>
+               
+                </div>
+            <div class="function-item">
+                <div class="function-name">cv2.destroyAllWindows()</div>
+                <div class="function-description">
+                    Cierra todas las ventanas abiertas por OpenCV.
                 </div>
                
                 </div>
@@ -275,4 +297,5 @@ cv2.destroyAllWindows()</code></pre>
         </section>
     </div>
 </body>
+
 </html>
